@@ -2,39 +2,36 @@ function Controller() {
 
     var activeSection = undefined;
     
-    var sections = [ { id: "home",    desc: "Intro" },
-		     { id: "photo",  desc: "Fotografía" },
-		     { id: "article", desc: "Artículos" },
-		     { id: "about",   desc: "Sobre mí" },
-		     { id: "contact", desc: "Contacto" } ];
-    
+    var sections = [{ id: "home",    desc: "Intro" },
+		    { id: "photo",   desc: "Fotografía" },
+		    { id: "article", desc: "Artículos" },
+		    { id: "about",   desc: "Sobre mí" },
+		    { id: "contact", desc: "Contacto" }];
+   
+    // Antes de cambiar la sección, ocultamos todos aquellos
+    // elementos que correspondan a las diferentes secciones y
+    // ponemos los botones de las secciones desactivados. Las
+    // clases se forman como id + "section". Dicha clase será
+    // usada por los elementos del index, para establecer a
+    // que seccion pertenecen.
     function setActiveSection(id) {
+        
+        // Buscamos la seccion
 	var section =_.find(sections, { 'id': id });
-	if(section) {
 
-	    // Antes de cambiar la sección, ocultamos todos aquellos
-	    // que correspondan a la seccion activa. La clase activa
-	    // se forma como id + "section". Dicha clase será usada
-	    // por los elementos del index, para establecer a que
-	    // seccion pertenecen.
-	    if(activeSection) {
+	if(section && section !== activeSection) {
+
+            if(activeSection) {
 		var className = "." + activeSection.id + "-section"
 		$(className).hide(1500);
-	    }
-
+                activeSection.button.removeClass("active");
+            }
+            
 	    activeSection = section;
-
-	    // Mostramos todos los elementos HTML con la clase
-	    // asociada a la nueva sección
+                
+	    activeSection.button.addClass("active");
 	    var className = "." + activeSection.id + "-section"
 	    $(className).show(1500);
-
-	    // Ponemos en la cabecera la sección activa, pero primero las ponemos todas desactivas
-	    _.forEach(sections, function(section) {
-		section.button.removeClass("active")
-	    });
-	    activeSection.button.addClass("active");
-
 	}
     }
 

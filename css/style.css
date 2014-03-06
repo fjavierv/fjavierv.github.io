@@ -57,3 +57,8 @@ body {
     display: none;
     background: url(../img/loader.png) no-repeat;
 }
+
+/* Al empezar todas las secciones están ocultas */
+.section {
+    display: none;
+}
