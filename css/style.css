@@ -42,3 +42,18 @@ body {
 .galleria-exit:hover {
     color: #fff;
 }
+
+#loader {
+    background: #000;
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+    background: url(../img/loader.png) no-repeat;
+}

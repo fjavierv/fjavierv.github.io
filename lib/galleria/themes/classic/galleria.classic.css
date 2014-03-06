@@ -52,14 +52,17 @@
 }
 .galleria-loader {
     background: #000;
-    width: 20px;
-    height: 20px;
+    width: 64px;
+    height: 64px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     z-index: 2;
     display: none;
-    background: url(classic-loader.gif) no-repeat 2px 2px;
+    background: url(classic-loader-new.png) no-repeat;
 }
 .galleria-info {
     width: 50%;
