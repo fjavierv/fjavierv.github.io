@@ -1,0 +1,15 @@
+#+AUTHOR:Francisco Javier Vázquez Púa
+#+TITLE:Artículos
+#+LANGUAGE: es
+#+STARTUP: showall hidestars
+ 
+* Introducción
+
+Esta sección ha sido creada con el fin de divulgar diversos
+artículos que creemos puedan ser de utilidad a la comunidad.
+
+* Artículos
+
+  - [[file:formato_raw_s5_pro.org][Formato RAW de la Fujifilm S5 Pro]]
+  - [[file:rango_dinamico_super_ccd.org][Rango dinámico del Super CCD]]
+  - [[file:optimizar_revelado.org][Optimizar el revelado para la Fuji S5 Pro]]

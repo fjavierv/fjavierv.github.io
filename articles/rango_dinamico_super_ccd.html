@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rango dinámico del Super CCD</title>
+<!-- 2014-03-08 sáb 00:41 -->
+<meta  charset="utf-8">
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Francisco Javier Vázquez Púa">
+<link rel="stylesheet"
+                       href="css/style.css" type="text/css"/>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Rango dinámico del Super CCD</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introducción teórica</a></li>
+<li><a href="#sec-2">Comparativa de reveladores para el Super CCD</a>
+<ul>
+<li><a href="#sec-2-1">Hyper Utility</a></li>
+<li><a href="#sec-2-2">Ufraw</a></li>
+<li><a href="#sec-2-3">Enfuse</a></li>
+<li><a href="#sec-2-4">Comparativa</a>
+<ul>
+<li><a href="#sec-2-4-1">Zonas quemadas</a></li>
+<li><a href="#sec-2-4-2">Zonas oscuras</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introducción teórica</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Super CCD es la denominación que Fujifilm a dado a unos sensores que
+optimizan la captura de rango dinámico. Para conseguir esto, dichos
+sensores incorporan dos tipos de captores:
+</p>
+
+<ul class="org-ul">
+<li>Captores S
+</li>
+<li>Captores R
+
+<p>
+Los captores de tipo S son más grandes que los de tipo R, esta
+diferencia de tamaño permite que los captores S sean más sensibles a
+la luz que los R. No obstante, al ser más sensibles a la luz también
+tienen el inconveniente de saturarse con más facilidad que los
+captores R. 
+</p>
+
+<p>
+Cuando realizamos una fotografía con el Super CCD en realidad
+estamos realizando dos, una tomada con los captores S y otra con los
+captores R. Debido a la diferencia de sensibilidad a la luz de los
+dos captores, ambas fotos tendrán diferentes exposiciones.
+</p>
+
+<p>
+Teniendo en cuenta que los captores codifican la información en 14
+bits, el valor teórico máximo de saturación es de:
+</p>
+</li>
+</ul>
+
+<div class="center">
+<p>
+<i>Valor Teórico Máximo de Saturación</i> = 2<sup>14</sup>-1 = 16384
+</p>
+</div>
+
+<p>
+En la siguiente gráfica está representada la respuesta de los dos
+captores. En dicha gráfica el valor 1 representa el valor teórico
+máximo de saturación.
+</p>
+
+
+<div class="figure">
+<p><img src="img/grafica.png" alt="grafica.png">
+</p>
+</div>
+
+<p>
+Como podemos ver en la gráfica anterior, el nivel de saturación de
+los dos captores es muy diferente. Los captores S responden de
+forma totalmente lineal hasta llegar a 0.82 (13434), siendo su
+saturación máxima aproximadamente 0.92 (15073l). En el caso de los
+captores R, la saturación de estos se produce con un valor mucho
+más bajo, estos se comportan linealmente hasta llegar a 0.2 (3276),
+siendo su valor máximo de saturación 0.26 (4259).
+</p>
+
+<p>
+Para comparar los dos captores es necesario escalar los valores
+obtenidos con cada uno de ellos al valor teórico máximo de
+saturación. De esta forma hemos podido aproximar, una
+sensibilidad relativa entre los dos captores de:
+</p>
+
+<ul class="org-ul">
+<li>Red: 5.07
+</li>
+<li>Green: 4.51
+</li>
+<li>Blue: 5.24
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Comparativa de reveladores para el Super CCD</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+En esta sección compararemos la forma en la que diferentes
+reveladores RAW aprovechan las características del Super CCD, para
+ello trabajaremos con una imagen RAW obtenida a través de una Fuji
+S5 Pro, la cual fue sobreexpuesta con el fin de mostrar las
+capacidades del sensor que incorpora esta máquina.
+</p>
+
+<div class="center">
+<p>
+<a href="img/sevilla.raf"><span class="underline">Enlace imagen RAW</span></a>
+</p>
+</div>
+
+<p>
+Para realizar las pruebas de revelado, dejaremos los parámetros tal
+y como estaban configurados en la camara a la hora de realizar la
+captura, ya que el objetivo de este artículo es mostrar el
+rendimiento del sensor no la creatividad de un servidor (menos mal).
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Hyper Utility</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+La imagen mostrada a continuación, ha sido revelada con Hyper
+Utility v3 (programa oficial de Fuji).
+</p>
+
+
+<div class="figure">
+<p><img src="img/sevilla_hu.jpg" alt="sevilla_hu.jpg">
+</p>
+</div>
+
+<p>
+Como podemos ver, a pesar de la gran diferencia de luz en la
+imagen, el revelador al usar la información del sensor R, es capaz
+de recuperar en gran medida parte de la información quemada en la
+imagen proveniente de los captores S.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Ufraw</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+En este caso, la siguiente imagen es el resultado de revelar el RAW
+a través de Ufraw.
+</p>
+
+
+<div class="figure">
+<p><img src="img/sevilla_ufraw.jpg" alt="sevilla_ufraw.jpg">
+</p>
+</div>
+
+<p>
+Aunque la imagen haya sido revelada con Ufraw, la mayoría de los
+reveladores hubieran dado resultados similares (refiriéndonos a las
+altas luces), ya que la mayoría de ellos solo hacen uso la
+información de los captores S.
+</p>
+
+<p>
+Dado que no tengo conocimiento de que en GNU/Linux exista ningún
+revelador que explote al máximo la información que genera el Super
+CCD, decidí buscar una forma de explotar las características de
+este sensor en dicho sistema operativo. En el afán de conseguir
+este objetivo, estudié el comportamiento de <a href="http://www.cybercom.net/~dcoffin/dcraw/"><b>Dcraw</b></a> con los
+archivos RAW generados por el Super CCD. Como muchos sabéis, este
+programa es un software libre desarrollado por Dave Coffin, el cual
+incorpora algunas características muy útiles para revelar imágenes
+generadas con el Super CCD. Cuando revelamos los RAW generados por
+el Super CCD, Dcraw no usa las dos imágenes para formar una con
+rango dinámico ampliado, de hecho ignora completamente la imagen
+proveniente de los captores R. Por contra Dcraw nos permite revelar
+de forma independiente las dos imágenes contenidas en el fichero
+RAW. Las dos imágenes siguientes son las provenientes de
+los sensores S y R respectivamente.
+</p>
+
+
+<div class="figure">
+<p><img src="img/sevilla_s.jpg" alt="sevilla_s.jpg">
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="img/sevilla_r.jpg" alt="sevilla_r.jpg">
+</p>
+</div>
+
+
+<p>
+Como podemos ver, ambas imágenes tienen una gran diferencia de
+exposición, pero quizás el aspecto que más llame la atención esté
+en la imagen R, en ella podemos observar como existe más
+información en las altas luces que la devuelta el revelador
+HU. Esto fue lo que me llevó a pensar que el resultado de HU era
+mejorable.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Enfuse</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Construir un revelador RAW o adaptar uno ya existente para explotar
+el funcionamiento del sensor supone un trabajo enorme, así que se
+me ocurrió aplicar un fantástico programa (también software libre)
+llamado <a href="http://enblend.sourceforge.net/"><b>Enfuse</b></a>.
+</p>
+
+<p>
+Enfuse es una magnífica aplicación que nos permite fusionar
+imágenes con diferente exposición, ¿qué es lo que genera el Super
+CCD?, ¡¡¡EXACTO!!!, dos imágenes exactamente iguales con una
+diferencia de exposición que nos permitirá recuperar las altas
+luces de la escena. Debido al los principios en los que se basa
+este programa, se hace ideal para este uso, no obstante el uso de
+este programa se sale de los objetivos marcados para este artículo,
+así que sin más os mostraré el resultado obtenido.
+</p>
+
+
+<div class="figure">
+<p><img src="img/sevilla_enfuse.jpg" alt="sevilla_enfuse.jpg">
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">Comparativa</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Por último adjunto una comparativa de los resultados obtenidos con
+cada programa. La interpretación de estos resultados queda a juicio
+de cada uno.
+</p>
+
+<DIV class="figure">
+<A HREF="javascript:void(null);" onMouseOver="blink();">
+     <IMG NAME="sevilla" SRC="img/sevilla_enfuse.jpg">
+</A>
+
+<FORM>
+     <INPUT TYPE="button" VALUE=" Imagen Captores R " onClick="document.sevilla.src = 'img/sevilla_r.jpg';">
+     <INPUT TYPE="button" VALUE=" Imagen HU "         onClick="document.sevilla.src = 'img/sevilla_hu.jpg';">
+     <INPUT TYPE="button" VALUE=" Imagen Enfuse "     onClick="document.sevilla.src = 'img/sevilla_enfuse.jpg';">
+     <INPUT TYPE="button" VALUE=" Imagen Ufraw "      onClick="document.sevilla.src = 'img/sevilla_ufraw.jpg';">
+     <INPUT TYPE="button" VALUE=" Imagen Captores S " onClick="document.sevilla.src = 'img/sevilla_s.jpg';">
+</FORM>
+</DIV>
+</div>
+
+<div id="outline-container-sec-2-4-1" class="outline-4">
+<h4 id="sec-2-4-1">Zonas quemadas</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<table>
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Imagen captores R</th>
+<th scope="col" class="left">Imagen HU</th>
+<th scope="col" class="left">Imagen Enfuse</th>
+<th scope="col" class="left">Imagen Ufraw</th>
+<th scope="col" class="left">Imagen captores S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><img src="img/patio_r.jpg" alt="patio_r.jpg"></td>
+<td class="left"><img src="img/patio_hu.jpg" alt="patio_hu.jpg"></td>
+<td class="left"><img src="img/patio_enfuse.jpg" alt="patio_enfuse.jpg"></td>
+<td class="left"><img src="img/patio_ufraw.jpg" alt="patio_ufraw.jpg"></td>
+<td class="left"><img src="img/patio_s.jpg" alt="patio_s.jpg"></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Imagen captores R</th>
+<th scope="col" class="left">Imagen HU</th>
+<th scope="col" class="left">Imagen Enfuse</th>
+<th scope="col" class="left">Imagen Ufraw</th>
+<th scope="col" class="left">Imagen captores S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><img src="img/pared_r.jpg" alt="pared_r.jpg"></td>
+<td class="left"><img src="img/pared_hu.jpg" alt="pared_hu.jpg"></td>
+<td class="left"><img src="img/pared_enfuse.jpg" alt="pared_enfuse.jpg"></td>
+<td class="left"><img src="img/pared_ufraw.jpg" alt="pared_ufraw.jpg"></td>
+<td class="left"><img src="img/pared_s.jpg" alt="pared_s.jpg"></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Imagen captores R</th>
+<th scope="col" class="left">Imagen HU</th>
+<th scope="col" class="left">Imagen Enfuse</th>
+<th scope="col" class="left">Imagen Ufraw</th>
+<th scope="col" class="left">Imagen captores S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><img src="img/suelo_r.jpg" alt="suelo_r.jpg"></td>
+<td class="left"><img src="img/suelo_hu.jpg" alt="suelo_hu.jpg"></td>
+<td class="left"><img src="img/suelo_enfuse.jpg" alt="suelo_enfuse.jpg"></td>
+<td class="left"><img src="img/suelo_ufraw.jpg" alt="suelo_ufraw.jpg"></td>
+<td class="left"><img src="img/suelo_s.jpg" alt="suelo_s.jpg"></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Imagen captores R</th>
+<th scope="col" class="left">Imagen HU</th>
+<th scope="col" class="left">Imagen Enfuse</th>
+<th scope="col" class="left">Imagen Ufraw</th>
+<th scope="col" class="left">Imagen captores S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><img src="img/torre_r.jpg" alt="torre_r.jpg"></td>
+<td class="left"><img src="img/torre_hu.jpg" alt="torre_hu.jpg"></td>
+<td class="left"><img src="img/torre_enfuse.jpg" alt="torre_enfuse.jpg"></td>
+<td class="left"><img src="img/torre_ufraw.jpg" alt="torre_ufraw.jpg"></td>
+<td class="left"><img src="img/torre_s.jpg" alt="torre_s.jpg"></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-2-4-2" class="outline-4">
+<h4 id="sec-2-4-2">Zonas oscuras</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<table>
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Imagen captores R</th>
+<th scope="col" class="left">Imagen HU</th>
+<th scope="col" class="left">Imagen Enfuse</th>
+<th scope="col" class="left">Imagen Ufraw</th>
+<th scope="col" class="left">Imagen captores S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><img src="img/faro_r.jpg" alt="faro_r.jpg"></td>
+<td class="left"><img src="img/faro_hu.jpg" alt="faro_hu.jpg"></td>
+<td class="left"><img src="img/faro_enfuse.jpg" alt="faro_enfuse.jpg"></td>
+<td class="left"><img src="img/faro_ufraw.jpg" alt="faro_ufraw.jpg"></td>
+<td class="left"><img src="img/faro_s.jpg" alt="faro_s.jpg"></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Imagen captores R</th>
+<th scope="col" class="left">Imagen HU</th>
+<th scope="col" class="left">Imagen Enfuse</th>
+<th scope="col" class="left">Imagen Ufraw</th>
+<th scope="col" class="left">Imagen captores S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><img src="img/techo_r.jpg" alt="techo_r.jpg"></td>
+<td class="left"><img src="img/techo_hu.jpg" alt="techo_hu.jpg"></td>
+<td class="left"><img src="img/techo_enfuse.jpg" alt="techo_enfuse.jpg"></td>
+<td class="left"><img src="img/techo_ufraw.jpg" alt="techo_ufraw.jpg"></td>
+<td class="left"><img src="img/techo_s.jpg" alt="techo_s.jpg"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Autor: Francisco Javier Vázquez Púa</p>
+<p class="date">Created: 2014-03-08 sáb 00:41</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -62,3 +62,15 @@ body {
 .section {
     display: none;
 }
+
+footer {
+    padding: 15px;
+}
+
+.article-section {
+    text-align: left;
+}
+
+hr {
+    border-top: 1px solid #ccc;
+}
