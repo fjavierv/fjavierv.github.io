@@ -7,14 +7,14 @@
      
 Desde hace ya algunos años soy usuario de GNU/Linux. Cuando me adentré
 en esto de la fotografía me alegré muchísimo de descubrí la
-existencia de un programa de revelado llamado [[http:ufraw.sourceforge.net][Ufraw]], con él comencé
+existencia de un programa de revelado llamado [[http://ufraw.sourceforge.net][Ufraw]], con él comencé
 a revelar mis primeros ficheros RAW. Se trata de un programa sencillo
 y muy práctico, ideal para comenzar el aprendizaje de revelar RAW.
 
 * Dcraw
 
 Pasado algún tiempo encontré otro programa de revelado llamado
-[[http:www.cybercom.net/~dcoffin/dcraw][Dcraw]], a diferencia del anterior, Dcraw no es un programa gráfico,
+[[http://www.cybercom.net/~dcoffin/dcraw][Dcraw]], a diferencia del anterior, Dcraw no es un programa gráfico,
 es un programa de consola. Dcraw nos brinda un conjunto posibilidades
 inexistentes en otros reveladores RAW, esto hace de él una herramienta
 increíblemente pedagógica para todas aquellas personas que quieran

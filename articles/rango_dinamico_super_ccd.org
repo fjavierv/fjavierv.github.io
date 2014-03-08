@@ -150,7 +150,7 @@
 #+BEGIN_HTML
 <DIV class="figure">
 <A HREF="javascript:void(null);" onMouseOver="blink();">
-     <IMG NAME="sevilla" SRC="img/sevilla_enfuse.jpg">
+     <IMG id="sevilla" src="img/sevilla_enfuse.jpg" alt="Foto sevilla">
 </A>
 
 <FORM>
