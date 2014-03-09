@@ -1,13 +1,7 @@
-function Controller() {
+function Controller(sections) {
 
     var activeSection = undefined;
     
-    var sections = [{ id: "home",    desc: "Intro" },
-		    { id: "photo",   desc: "Fotografía" },
-		    { id: "article", desc: "Artículos" },
-		    { id: "about",   desc: "Sobre mí" },
-		    { id: "contact", desc: "Contacto" }];
-   
     // Antes de cambiar la sección, ocultamos todos aquellos
     // elementos que correspondan a las diferentes secciones y
     // ponemos los botones de las secciones desactivados. Las
@@ -57,6 +51,6 @@ function Controller() {
 ////////////////////////////////////////////////////////////////////////////////
 // Main
 ////////////////////////////////////////////////////////////////////////////////
-var controller = new Controller();
+var controller = new Controller(config.sections);
 controller.init();
 controller.setActiveSection("photo");

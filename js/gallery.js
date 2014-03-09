@@ -1,10 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Configuracion
-////////////////////////////////////////////////////////////////////////////////
-var disappearTime = 1000; // Tiempo en aparecer/desaparecer la galleria
-var containerID = "galleria"; // Id del div donde añadiremos la galería
-
-////////////////////////////////////////////////////////////////////////////////
 // Variable globales
 ////////////////////////////////////////////////////////////////////////////////
 var lastPhotoSet = undefined; // Almacenamos la última galería mostrada
@@ -45,7 +39,10 @@ function closeGalleria() {
     // Ocultamos el loader
     document.getElementById("loader").style.display = "none";        
     container.style.opacity = "0";
-    window.setTimeout(function() { container.style.display = "none"; }, disappearTime);
+    window.setTimeout(function() { container.style.display = "none"; }, config.galleriaDisappearTime);
+
+    // Paramos el audio
+    lastPhotoSet.audio.pause();
 }
 
 // Los albunes los hayamos de Flick usando la clase Flickr creada por
@@ -53,7 +50,7 @@ function closeGalleria() {
 // embargo para generar la Galleria con las fotos de un álbum si que
 // tiene soporte, esto facilita mucho la labor, ya que el plugin
 // formatea los datos para que Galleria lo entienda.
-function loadGalleria(photoSetId) {
+function loadGalleria(photoSet) {
 
     // Mostramos el loader
     document.getElementById("loader").style.display = "inline";    
@@ -63,20 +60,20 @@ function loadGalleria(photoSetId) {
     
     // La primera vez que cargamos galleria
     if(!lastPhotoSet) {
-        GalleriaFlickAPI.set(photoSetId, function(data) {
+        GalleriaFlickAPI.set(photoSet.id, function(data) {
             console.log(data);
-            Galleria.run('#' + containerID, {
+            Galleria.run('#' + config.containerID, {
                 dataSource: data
             });
         });
     } else  {
-        GalleriaFlickAPI.set(photoSetId, function(data) {
+        GalleriaFlickAPI.set(photoSet.id, function(data) {
             console.log(data);
             Galleria.get(0).load(data);
         });
     }
 
-    lastPhotoSet = photoSetId;
+    lastPhotoSet = photoSet;
 
 }
 
@@ -105,10 +102,31 @@ function loadAlbums(json) {
 	var title = document.createElement("h3");
 	title.innerHTML = photoSet.title._content;
 	capt.appendChild(title);
+
+        // La descripcion
 	var desc = document.createElement("p");
 	desc.setAttribute("class", "text-center");
-	desc.innerHTML = photoSet.description._content;
+        // La descripcion será "desc:xxxxxmusic:xxxxx"
+        var text = photoSet.description._content.match(/.*/);
+	desc.innerHTML = text;
 	capt.appendChild(desc);
+
+        // Música
+        var audioLink = photoSet.description._content.match(/\http.*mp3/);
+        var audio;
+        var audioSource;
+        if(audioLink) {
+	    audio = document.createElement("audio");
+            audio.setAttribute("preload", "none");
+	    capt.appendChild(audio);
+	    audioSource = document.createElement("source");
+            audioSource.setAttribute("src", audioLink);
+            audioSource.setAttribute("type", "audio/mpeg");
+	    audio.appendChild(audioSource);
+            photoSet.audio = audio;
+        }
+        
+        // Boton
 	var p = document.createElement("p");
 	capt.appendChild(p);
 	var btn = document.createElement("a");
@@ -116,11 +134,25 @@ function loadAlbums(json) {
 	btn.setAttribute("href", "#");
 	btn.setAttribute("class", "btn btn-primary");
 	btn.setAttribute("role", "button");
-	btn.innerHTML = "Visitar"
+	btn.innerHTML = config.textShowGallery;
 	btn.addEventListener("click", function() {
-	    loadGalleria(photoSet.id);
+	    loadGalleria(photoSet);
+            if(audioLink) {
+                audio.load();
+                audio.play();
+            }
 	});
 	p.appendChild(btn);
+
+        // Enlace a al música
+        if(audioLink) {
+	    var link = document.createElement("a");
+	    link.setAttribute("class", "text-center");
+            link.setAttribute("href", audioLink);
+            link.innerHTML = "Enlace a la música"
+	    capt.appendChild(link);
+        }
+
     });
 }
 
@@ -137,7 +169,7 @@ function loadAlbums(json) {
 // variable global "lastPhotoSet". Cuando cargamos Galleria por
 // primera vez, lo haremos con:
 //
-//   Galleria.run('#' + containerID, {
+//   Galleria.run('#' + config.containerID, {
 //      dataSource: data
 //   });
 //
@@ -151,18 +183,18 @@ function loadAlbums(json) {
 //   Galleria.get(0).load(data);
 
 // API de flickr
-var myFlickrAPI = new Flickr();
+var myFlickrAPI = new Flickr(config.api_key, config.restAPI);
 
 // Elemento donde añadiremos la galería
-var container = document.getElementById(containerID);
+var container = document.getElementById(config.containerID);
 
-// El tiempo para esta transición será "disappearTime", luego lo definimos en código
-container.style.transition = "opacity " + disappearTime/1000 + "s";
+// El tiempo para esta transición será "config.galleriaDisappearTime", luego lo definimos en código
+container.style.transition = "opacity " + config.galleriaDisappearTime/1000 + "s";
 
 // Creamos la API que da el plugin de Galleria
-var GalleriaFlickAPI = new Galleria.Flickr(myFlickrAPI.api_key); 
+var GalleriaFlickAPI = new Galleria.Flickr(config.api_key); 
 GalleriaFlickAPI.setOptions({
-    imageSize: 'big',
+    imageSize: config.sizePhoto,
 })
 
 // Cargamos el tema para Galleria
@@ -170,6 +202,6 @@ Galleria.loadTheme("lib/galleria/themes/classic/galleria.classic.min.js");
 
 // Ejecutamos la carga de albunes
 myFlickrAPI.execute({ method: "flickr.photosets.getList",
-                      user_id: "110747985@N04" }, loadAlbums);
+                      user_id: config.user_id }, loadAlbums);
 
 
