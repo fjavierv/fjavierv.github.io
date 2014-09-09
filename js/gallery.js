@@ -12,7 +12,7 @@ Galleria.ready(function() {
     
     var galleria = this;
 
-    console.log("Galleria ready!!!");
+    //console.log("Galleria ready!!!");
 
     galleria.addElement('exit');
     galleria.appendChild('container','exit');
@@ -28,7 +28,7 @@ Galleria.ready(function() {
 
     // Evento que se dispara cada vez que se carga una foto
     galleria.bind("loadfinish", function(e) {
-        console.log("Data loaded!!!");
+        //console.log("Data loaded!!!");
         container.style.opacity = "1.0";
     });
 
@@ -61,14 +61,14 @@ function loadGalleria(photoSet) {
     // La primera vez que cargamos galleria
     if(!lastPhotoSet) {
         GalleriaFlickAPI.set(photoSet.id, function(data) {
-            console.log(data);
+            //console.log(data);
             Galleria.run('#' + config.containerID, {
                 dataSource: data
             });
         });
     } else  {
         GalleriaFlickAPI.set(photoSet.id, function(data) {
-            console.log(data);
+            //console.log(data);
             Galleria.get(0).load(data);
         });
     }
