@@ -195,6 +195,7 @@ container.style.transition = "opacity " + config.galleriaDisappearTime/1000 + "s
 var GalleriaFlickAPI = new Galleria.Flickr(config.api_key); 
 GalleriaFlickAPI.setOptions({
     imageSize: config.sizePhoto,
+    max: 500
 })
 
 // Cargamos el tema para Galleria
