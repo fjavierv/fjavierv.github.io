@@ -53,4 +53,4 @@ function Controller(sections) {
 ////////////////////////////////////////////////////////////////////////////////
 var controller = new Controller(config.sections);
 controller.init();
-controller.setActiveSection("photo");
+controller.setActiveSection("workshop");

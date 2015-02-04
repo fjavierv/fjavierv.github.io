@@ -3,11 +3,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 var config = {
 
-    sections: [{ id: "home",    desc: "Intro" },
-               { id: "photo",   desc: "Fotografía" },
-               { id: "article", desc: "Artículos" },
-               { id: "about",   desc: "Sobre mí" },
-               { id: "contact", desc: "Contacto" }],
+    sections: [
+      { id: "photo",   desc: "Fotografía" },
+      { id: "article", desc: "Artículos" },
+      { id: "workshop", desc: "Cursos" }
+      //{ id: "about",   desc: "Sobre mí" },
+      //{ id: "contact", desc: "Contacto" }
+      //{ id: "home",    desc: "Intro" },
+    ],
 
     restAPI: "https://api.flickr.com/services/rest/",
     api_key: "f97265778564609a85d45b9444b21cd4",
