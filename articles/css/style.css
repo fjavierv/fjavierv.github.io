@@ -4,9 +4,7 @@ body { background-color: #111111;
        margin-left: 30px;
        margin-right: 30px;
        text-indent:0.5cm;
-       font-family:Times,serif;  
-/*        font-family:sans-serif;  */
-/*        font-family: "Courier New", Courier, monospace  */
+       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
      }
 
 a:link { color: #ffd706;
@@ -35,11 +33,11 @@ p { text-indent: 0.5cm; }
           font-size: smaller; }
 
 
-ul { list-style-type: square; 
+ul { list-style-type: square;
      list-style-position: inside; }
 
 
-dt { font-weight: bold; 
+dt { font-weight: bold;
      margin-top: 20px;
      margin-bottom: 20px;}
 
@@ -47,6 +45,5 @@ dt { font-weight: bold;
 #postamble { text-align: center;
              font-family:sans-serif;
 	     font-size: medium;
-             margin: 20px; 
+             margin: 20px;
              border-top: 2px solid #ffd706; }
-
